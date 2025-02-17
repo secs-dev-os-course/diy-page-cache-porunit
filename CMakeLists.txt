@@ -1,15 +1,23 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.28)
 
-project(my-project
-        VERSION 0.0.0
-        DESCRIPTION "My best project"
-        LANGUAGES C CXX
-)
+project(lab1 VERSION 0.1.0)
 
-set(CMAKE_C_STANDARD 23)
-set(CMAKE_C_STANDARD_REQUIRED True)
+option(lab1_DEVELOPER "Enable ${PROJECT_NAME} developer mode" ON)
+option(lab1_BENCHMARK "Enable ${PROJECT_NAME} benchmark module" ON)
+option(lab2_CACHE "Enable cache module" ON)
 
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
-add_subdirectory(app)
+include(cmake/CompileOptions.cmake)
+
+if(lab1_BENCHMARK)
+    find_package(GBenchmark REQUIRED)
+    add_subdirectory(benchmark)
+endif()
+
+
+if(lab2_CACHE)
+    add_subdirectory(cache)
+    find_package(GTest REQUIRED)
+    add_subdirectory(test_cache)
+endif()

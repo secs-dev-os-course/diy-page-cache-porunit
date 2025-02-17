@@ -1,37 +1,33 @@
-# simple-cpp-template
+# C++ Monolith App Template
 
-## Использование шаблона
+## Getting Started
 
-В корне проекта:
+1. Open the project in the VSCode.
 
-1. Выполнить конфигурацию проекта и положить конфиги в каталог `build`:
-```shell
-cmake -B build
-```
-- опцией `-G` можно указать утилиту для сборки. Например, на Windows удобно использовать Ninja (предварительно установив его) вот так:
-```shell
-cmake -B build -G Ninja
-```
+2. Click "Reopen in Container" in a VSCode notification.
 
-2. Собрать проект с использованием подготовленной конфигурации в каталоге `build`:
-```shell
-cmake --build build
-```
+3. Do `bash ci/prepare.bash`.
 
-3. Запустить собранный проект из каталога с исполнаяемыми файлами:
-```shell
-./build/app/app
-```
+4. Do `bash ci/precommit.bash`.
 
-При желании можно настроить тесты, например, добавив модуль `test` по аналогии с
-`app`, где будут подключаться Google Tests.
+5. Replace `monolith` and `MONOLITH` with your project name.
 
-- - -
+6. Repeat steps 1-4.
 
-## Комментарии
+## Notes
 
-- В проекте показан пример использования CMake для сборки проекта на языке C и C++ (см. [app/CMakeLists.txt](./app/CMakeLists.txt)).
+- Application executable is available at `{build_dir}/source/{project_name}`.
 
-- Можно использовать свой простой Makefile вместо CMake или сделать Makefile для запуска CMake.
+- To enable `benchmark` module configure the project with `{project_name}_BENCHMARK=ON`.
 
-- Может потребоваться сделать `export CXX=clang++` и `export СС=clang`, чтобы CMake использовал нужные компиляторы.
+- Benchmark executables are available at `{build_dir}/benchmark/{project_name}-bench-{bench_name}`.
+
+- Do not forget to use `Asan` build mode for debugging.
+
+- Press F5 to build and run tests under a debuger in VSCode UI.
+
+## Thanks
+
+- <https://gitlab.com/Lipovsky/twist>
+
+- <https://github.com/vityaman-edu/bst>

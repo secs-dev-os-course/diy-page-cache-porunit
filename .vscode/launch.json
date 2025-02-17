@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug Test",
+            "program": "${workspaceFolder}/build/test/lab1-test",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build All"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Cache Test",
+            "program": "${workspaceFolder}/build/test_cache/lab2-test",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build All"
+        }
+    ]
+}
