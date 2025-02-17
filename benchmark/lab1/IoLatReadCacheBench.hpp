@@ -10,10 +10,9 @@
 
 #include "lab2/Api.hpp"
 
+constexpr const char* KTestFileName = "testfile.bin";
 
 namespace lab1 {
-  
-constexpr const char* KTestFileName = "testfile.bin";
 
 constexpr const size_t KBenchBlockSize = 2048;  // 2 KB
 

@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "lab1/IoLatReadCacheBench.hpp"
+#include "lab1/IoLatReadBench.hpp"
 
 namespace lab1::app {
 
@@ -20,7 +21,11 @@ struct ThreadData {
 void* RunBenchmark(void* arg) {
   auto* data = static_cast<ThreadData*>(arg);
 
- if (data->benchmark == "cache") {
+  if (data->benchmark == "io") {
+    IOLatencyReadBenchmark(data->iterations);
+    std::cout << "IO latency read benchmark completed with " << data->iterations
+              << " iterations.\n";
+  } else if (data->benchmark == "cache") {
     IOLatencyReadCacheBenchmark(data->iterations);
     std::cout << "IO latency read cache benchmark completed with " << data->iterations
               << " iterations.\n";
